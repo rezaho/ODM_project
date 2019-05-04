@@ -35,14 +35,13 @@ end
 
 %% Optimization Settings
 ops = sdpsettings('solver','Gurobi','verbose',0);
-diag = optimize(con,obj, ops)
+diag = optimize(con,obj, ops);
 
 %% Retrieve portfolio weights 
-x = value(x)
-z = value(z)
+x = value(x);
 
 %% Evaluate portfolio
-y_train = -value(obj)
-y_test = mean(x' * test')
+y_train = -value(obj);
+y_test = mean(min([a1*x' * test' + b1; a2*x' * test' + b2]',[],2));
 % test: 0.5712
 end

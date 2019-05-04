@@ -43,13 +43,13 @@ for i=1:N
 end
 %% Optimization Settings
 ops = sdpsettings('solver','Gurobi','verbose',0);
-diag = optimize(con,-obj,ops)
+diag = optimize(con,-obj,ops);
 
 %% Retrieve portfolio weights 
-x = value(x)
+x = value(x);
     
 %% Evaluate portfolio
-y_train = value(obj)
+y_train = value(obj);
 % 0.4134
 
 %% Mean out-of-sample utility
@@ -57,7 +57,7 @@ y_train = value(obj)
 %disp([a1*x' * test' + b1; a2*x' * test' + b2]')
 %disp(min([a1*x' * test' + b1; a2*x' * test' + b2]',[],2))
 
-y_test = mean(min([a1*x' * test' + b1; a2*x' * test' + b2]',[],2))
+y_test = mean(min([a1*x' * test' + b1; a2*x' * test' + b2]',[],2));
 % 0.5255
-
+y = y_test;
 end
