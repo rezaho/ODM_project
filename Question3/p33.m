@@ -30,18 +30,19 @@ obj = -sum(z)/N;
 %% Constraints
 con = [x >= 0, sum(x) == 1];
 for i=1:N
-    con = [con, a1*x'*test(i, :)' + b1 >= z(i), a2*x'*test(i, :)' + b2 >= z(i)];
+    con = [con, a1*x'*train(i, :)' + b1 >= z(i), a2*x'*train(i, :)' + b2 >= z(i)];
 end
 
 %% Optimization Settings
 ops = sdpsettings('solver','Gurobi','verbose',0);
-diag = optimize(con,obj, ops);
+diag = optimize(con,obj, ops)
 
 %% Retrieve portfolio weights 
-x = value(x);
-z = value(z);
+x = value(x)
+z = value(z)
 
 %% Evaluate portfolio
-y_test = mean(z);
-% 0.5712
+y_train = -value(obj)
+y_test = mean(x' * test')
+% test: 0.5712
 end

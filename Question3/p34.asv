@@ -49,15 +49,10 @@ diag = optimize(con,-obj,ops)
 x = value(x)
     
 %% Evaluate portfolio
-y_train = value(obj)
-% 0.4134
+y_train = mean(obj)
 
 %% Mean out-of-sample utility
-% Use below to check dimensions
-%disp([a1*x' * test' + b1; a2*x' * test' + b2]')
-%disp(min([a1*x' * test' + b1; a2*x' * test' + b2]',[],2))
+y_test = mean(x' * test');
 
-y_test = mean(min([a1*x' * test' + b1; a2*x' * test' + b2]',[],2))
-% 0.5255
 
 end
