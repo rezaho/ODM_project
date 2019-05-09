@@ -26,7 +26,7 @@ pi = 0.5712;
 %% Loop over all training datasets
 for n = 1:N
     train = sample_data(N_train);       % draw a new training dataset
-    [saa(n), ~] = p33(train, train) ;
+    [saa(n), ~] = p33(train, test) ;
     dro(n) = p34(train, test, rho);
     fprintf('Progress %0.2f\n',n/N)
 end
